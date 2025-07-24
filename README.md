@@ -1,2 +1,7 @@
-# CeFoods
-Um aplicativo para android desenvolvido por estudantes do Cefet MG - Timóteo.
+## CeFoods
+
+To run the devserver:
+```
+npm install
+npm run dev
+```

@@ -1,12 +1,14 @@
+// @ts-ignore: type declarations for Vite
 import { defineConfig } from "vite";
+// @ts-ignore: type declarations for plugin-react
 import react from "@vitejs/plugin-react";
-import { mochaPlugins } from "@getmocha/vite-plugins";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [...mochaPlugins(process.env), react()],
+  plugins: [react()],
   server: {
-    allowedHosts: true,
+    host: true, // Permite acesso pelo IP do PC
+    port: 8100, // Ou outro que preferir
   },
   build: {
     chunkSizeWarningLimit: 5000,

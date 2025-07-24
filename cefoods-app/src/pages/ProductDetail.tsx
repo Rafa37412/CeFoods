@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 import { ArrowLeft, Minus, Plus, ShoppingCart, Star, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { products as defaultProducts } from '../data/mockData';
@@ -12,7 +12,7 @@ const ProductDetail = () => {
   
   const { addToCart } = useCart();
   const { currentUser } = useAuth();
-  const navigate = useNavigate();
+  const history = useHistory();
   
   useEffect(() => {
     // Load products from localStorage if available
@@ -38,7 +38,7 @@ const ProductDetail = () => {
   
   const handleAddToCart = () => {
     if (!currentUser) {
-      navigate('/login');
+      history.push('/login');
       return;
     }
     
@@ -54,7 +54,7 @@ const ProductDetail = () => {
       });
     }
     
-    navigate('/cart');
+    history.push('/cart');
   };
   
   return (

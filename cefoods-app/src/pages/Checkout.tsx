@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { Check, ChevronLeft, ChevronRight, Star, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 const Checkout = () => {
   const { cartItems, getTotalPrice, clearCart } = useCart();
   const { currentUser, updateBalance } = useAuth();
-  const navigate = useNavigate();
+  const history = useHistory();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
   const [showRatingModal, setShowRatingModal] = useState(false);
@@ -16,12 +16,12 @@ const Checkout = () => {
   const [activePaymentMethod, setActivePaymentMethod] = useState<'balance' | 'cash' | 'pix'>('balance');
 
   if (!currentUser) {
-    navigate('/login');
+    history.push('/login');
     return null;
   }
 
   if (cartItems.length === 0) {
-    navigate('/');
+    history.push('/');
     return null;
   }
 
@@ -113,7 +113,7 @@ const Checkout = () => {
     } else {
       // Finished rating all products
       clearCart(); // Clear cart after purchase and ratings
-      navigate('/');
+      history.push('/');
     }
   };
   
@@ -125,7 +125,7 @@ const Checkout = () => {
   
   const handleSkipRatings = () => {
     clearCart();
-    navigate('/');
+    history.push('/');
   };
   
   const currentProduct = cartItems[currentProductIndex];

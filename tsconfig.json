@@ -20,5 +20,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "plugins"]
+  "include": ["src", "plugins", "cefoods-app/src/components", "cefoods-app/src/data", "cefoods-app/src/pages", "cefoods-app/src/App.tsx", "cefoods-app/src/main.tsx", "cefoods-app/src/vite-env.d.ts"]
 }

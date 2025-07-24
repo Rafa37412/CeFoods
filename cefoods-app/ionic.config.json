@@ -1,0 +1,7 @@
+{
+  "name": "cefoods-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}

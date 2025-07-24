@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { ShoppingCart } from 'lucide-react';
 
@@ -14,7 +14,7 @@ const Login = () => {
   });
   const [error, setError] = useState('');
   const { login, register } = useAuth();
-  const navigate = useNavigate();
+  const history = useHistory();
 
   // Clear form data when switching tabs
   useEffect(() => {
@@ -44,7 +44,7 @@ const Login = () => {
     
     const success = login(formData.username, formData.password);
     if (success) {
-      navigate('/');
+      history.push('/');
     } else {
       setError('Usuário ou senha inválidos');
     }
@@ -72,15 +72,15 @@ const Login = () => {
     });
     
     if (success) {
-      navigate('/');
+      history.push('/');
     } else {
       setError('Nome de usuário já existe');
     }
   };
 
   return (
-    <div className="flex min-h-screen bg-red-600">
-      <div className="w-full flex flex-col items-center justify-center px-6 py-8">
+    <div className="flex min-h-screen bg-red-600 overflow-hidden">
+      <div className="w-full flex flex-col items-center justify-center px-6 py-8 overflow-y-auto">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-2">
             <ShoppingCart className="h-12 w-12 text-white" />
